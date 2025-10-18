@@ -5,7 +5,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AvTimer
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.EmojiEmotions
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.*
@@ -20,6 +22,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.aleff.meucartaodevisitas.R
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 // Esta é a tela principal do cartão de visitas
 // O parâmetro onNavigateToProjects será uma função que leva à tela de projetos
@@ -33,6 +37,7 @@ fun ProfileScreen(
         modifier = modifier
             .fillMaxSize()  // Ocupa toda a tela disponível
             .background(MaterialTheme.colorScheme.background)
+            .verticalScroll(rememberScrollState())
             .padding(24.dp),  // Espaçamento interno de 24dp em todos os lados
         horizontalAlignment = Alignment.CenterHorizontally,  // Centraliza horizontalmente
         verticalArrangement = Arrangement.spacedBy(16.dp)  // Espaço de 16dp entre elementos
@@ -40,8 +45,6 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Seção da foto de perfil
-        // Por enquanto usaremos um ícone padrão, mas você pode substituir por sua foto
         Box(
             modifier = Modifier
                 .size(150.dp)  // Tamanho quadrado de 150dp
@@ -49,9 +52,8 @@ fun ProfileScreen(
                 .background(MaterialTheme.colorScheme.primaryContainer),
             contentAlignment = Alignment.Center
         ) {
-            // Você pode substituir este Icon por uma Image com sua foto
             Icon(
-                imageVector = Icons.Default.Email,  // Ícone temporário
+                imageVector = Icons.Default.EmojiEmotions,  // Ícone temporário
                 contentDescription = "Foto de perfil",
                 modifier = Modifier.size(80.dp),
                 tint = MaterialTheme.colorScheme.onPrimaryContainer
@@ -62,13 +64,13 @@ fun ProfileScreen(
 
         // Nome completo
         Text(
-            text = "Seu Nome Completo",  // Substitua pelo seu nome real
+            text = "Aleff Paulo Silva Nogueira",
             style = MaterialTheme.typography.headlineLarge,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onBackground
         )
 
-        // Título profissional ou área de atuação
+        // PROFISSÃO
         Text(
             text = "Desenvolvedor Mobile | Estudante de Sistemas para Internet",
             style = MaterialTheme.typography.titleMedium,
@@ -77,7 +79,7 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Card com informações de contato
+        // CONTATO
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(
@@ -88,36 +90,36 @@ fun ProfileScreen(
                 modifier = Modifier.padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                // Item de contato: Email
+                // Email
                 ContactItem(
                     icon = Icons.Default.Email,
                     label = "Email",
-                    value = "seu.email@exemplo.com"  // Substitua pelo seu email
+                    value = "aleffpaulosilvanogueira@gmail.com"
                 )
 
                 HorizontalDivider(Modifier, DividerDefaults.Thickness, DividerDefaults.color)
 
-                // Item de contato: Telefone
+                // Telefone
                 ContactItem(
                     icon = Icons.Default.Phone,
                     label = "Telefone",
-                    value = "(84) 99999-9999"  // Substitua pelo seu telefone
+                    value = "(84) 99991-6845" ,
                 )
 
                 HorizontalDivider(Modifier, DividerDefaults.Thickness, DividerDefaults.color)
 
-                // Item de contato: Localização
+                // Localização
                 ContactItem(
                     icon = Icons.Default.LocationOn,
                     label = "Localização",
-                    value = "Mossoró, RN"  // Substitua pela sua cidade
+                    value = "Mossoró, RN"
                 )
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Seção "Sobre Mim"
+        // "Sobre Mim"
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(
@@ -146,7 +148,7 @@ fun ProfileScreen(
             }
         }
 
-        Spacer(modifier = Modifier.weight(1f))  // Empurra o botão para baixo
+        Spacer(modifier = Modifier.weight(1f))
 
         // Botão para navegar aos projetos
         Button(

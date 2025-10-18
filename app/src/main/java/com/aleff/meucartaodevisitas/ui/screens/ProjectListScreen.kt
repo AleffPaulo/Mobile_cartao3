@@ -15,18 +15,15 @@ import androidx.compose.ui.unit.dp
 import com.aleff.meucartaodevisitas.model.mockProjects
 import com.aleff.meucartaodevisitas.ui.components.ProjectCard
 
-// Esta tela exibe a lista completa de projetos usando uma LazyColumn
-// LazyColumn é como um RecyclerView: renderiza apenas os itens visíveis na tela
-// Isso é crucial para performance quando você tem muitos itens
-@OptIn(ExperimentalMaterial3Api::class)  // Necessário para APIs experimentais do Material 3
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProjectListScreen(
-    onNavigateBack: () -> Unit,  // Função para voltar à tela anterior
-    onProjectClick: (Int) -> Unit,  // Função para navegar aos detalhes, recebe o ID do projeto
+    onNavigateBack: () -> Unit,
+    onProjectClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // Scaffold fornece uma estrutura de layout padrão para telas
-    // Inclui slots para TopBar, BottomBar, FloatingActionButton, etc.
+
     Scaffold(
         topBar = {
             // TopAppBar cria a barra superior com título e ícones
@@ -54,9 +51,7 @@ fun ProjectListScreen(
             )
         }
     ) { paddingValues ->
-        // LazyColumn é o componente chave para listas de rolagem eficientes
-        // Ela só cria e renderiza os itens que estão visíveis na tela
-        // Quando você rola, ela recicla as views que saem da tela e as reutiliza
+
         LazyColumn(
             modifier = modifier
                 .fillMaxSize()
@@ -92,9 +87,7 @@ fun ProjectListScreen(
                 }
             }
 
-            // A função 'items' é mágica: ela percorre uma lista e cria um item
-            // para cada elemento. Aqui, percorremos mockProjects e criamos
-            // um ProjectCard para cada projeto
+
             items(
                 items = mockProjects,
                 key = { project -> project.id }  // Key única para cada item (importante para performance)
@@ -102,7 +95,6 @@ fun ProjectListScreen(
                 ProjectCard(
                     project = project,
                     onClick = {
-                        // Quando clicado, chama onProjectClick passando o ID
                         onProjectClick(project.id)
                     }
                 )

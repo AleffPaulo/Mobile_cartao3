@@ -6,7 +6,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
@@ -17,18 +16,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.aleff.meucartaodevisitas.model.mockProjects
 
-// Esta tela mostra os detalhes completos de um projeto específico
-// Ela recebe o ID do projeto e busca os dados correspondentes na lista mockada
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProjectDetailScreen(
-    projectId: Int,  // ID do projeto que foi clicado na lista
-    onNavigateBack: () -> Unit,  // Função para voltar à lista
+    projectId: Int,
+    onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // Busca o projeto correspondente na lista usando o ID
-    // A função 'find' percorre a lista e retorna o primeiro item que satisfaz a condição
-    // Se não encontrar nenhum, retorna null
     val project = mockProjects.find { it.id == projectId }
 
     Scaffold(
@@ -56,15 +51,14 @@ fun ProjectDetailScreen(
             )
         }
     ) { paddingValues ->
-        // O operador '?.' é o "safe call": só executa se project não for null
-        // O operador '?:' é o "Elvis operator": fornece um valor padrão se for null
+
         project?.let { projectData ->
             // Se o projeto foi encontrado, exibe seus detalhes
             Column(
                 modifier = modifier
                     .fillMaxSize()
                     .padding(paddingValues)
-                    .verticalScroll(rememberScrollState())  // Permite rolagem vertical
+                    .verticalScroll(rememberScrollState())
                     .padding(24.dp),
                 verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
@@ -134,7 +128,7 @@ fun ProjectDetailScreen(
                     title = "Tecnologias Utilizadas",
                     icon = Icons.Default.Code
                 ) {
-                    // Divide as tecnologias por vírgula e cria um chip para cada uma
+
                     val techs = projectData.technologies.split(",").map { it.trim() }
 
                     FlowRow(
