@@ -5,11 +5,19 @@ plugins {
 }
 
 android {
+<<<<<<< HEAD
     namespace = "com.aleff.meucartaodevisitas"
     compileSdk = 36
 
     defaultConfig {
         applicationId = "com.aleff.meucartaodevisitas"
+=======
+    namespace = "com.aleff.mobile_cartao"
+    compileSdk = 36
+
+    defaultConfig {
+        applicationId = "com.aleff.mobile_cartao"
+>>>>>>> 22e9f95e35c46ee42355273b3748f67ca6dac7b4
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -56,6 +64,9 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+<<<<<<< HEAD
     implementation("androidx.navigation:navigation-compose:2.9.5")
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
+=======
+>>>>>>> 22e9f95e35c46ee42355273b3748f67ca6dac7b4
 }

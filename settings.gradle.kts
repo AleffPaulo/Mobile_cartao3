@@ -19,6 +19,11 @@ dependencyResolutionManagement {
     }
 }
 
+<<<<<<< HEAD
 rootProject.name = "MeuCartaoDeVisitas"
 include(":app")
  
+=======
+rootProject.name = "Mobile_cartao"
+include(":app")
+>>>>>>> 22e9f95e35c46ee42355273b3748f67ca6dac7b4
